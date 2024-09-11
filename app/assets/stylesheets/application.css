@@ -1,15 +1,165 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/* Global Styling */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+h1 {
+  color: #333;
+  font-size: 2em;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: #3498db;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button, input[type="submit"] {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+button:hover, input[type="submit"]:hover {
+  background-color: #2980b9;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+/* Table Styling */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #ffffff;
+  color: black;
+  cursor: pointer;
+}
+
+th.sorted-asc {
+  background-color: #82ccdd; /* Light blue for ascending */
+}
+
+th.sorted-desc {
+  background-color: #e74c3c; /* Light red for descending */
+}
+
+th .direction.asc::after {
+  content: "▲"; /* Up arrow */
+}
+
+th .direction.desc::after {
+  content: "▼"; /* Down arrow */
+}
+
+tr:nth-child(even) td {
+  background-color: #f2f2f2;
+}
+
+tr:hover td {
+  background-color: #ddd;
+}
+
+/* Action Links Styling */
+
+.edit-link, .delete-link {
+  text-decoration: none;
+}
+
+.edit-link {
+  color: blue;
+}
+
+.delete-link {
+  color: red;
+}
+
+.edit-link:hover, .delete-link:hover {
+  text-decoration: underline;
+}
+
+/* Form Styling */
+
+form {
+  width: 100%;
+  margin: 20px 0;
+}
+
+fieldset {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+fieldset legend {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+input[type="text"], textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+/* Show Page Styling */
+
+.movie-details {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  margin-bottom: 20px;
+}
+
+.movie-details p {
+  margin: 10px 0;
+}
+
+.movie-details strong {
+  font-size: 1.1em;
+}

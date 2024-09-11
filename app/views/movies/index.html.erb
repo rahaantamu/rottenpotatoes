@@ -1,16 +1,38 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+  <h1>Rotten Potatoes</h1>
 
-<% content_for :title, "Movies" %>
+  <table>
+    <thead>
+      <tr>
+        <th class="<%= params[:sort] == 'title' ? "sorted-#{params[:direction]}" : '' %>">
+          <%= link_to 'Title', movies_path(sort: 'title', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
+          <span class="direction <%= params[:direction] == 'asc' ? 'asc' : 'desc' %>"></span>
+        </th>
+        <th class="<%= params[:sort] == 'rating' ? "sorted-#{params[:direction]}" : '' %>">
+          <%= link_to 'Rating', movies_path(sort: 'rating', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
+          <span class="direction <%= params[:direction] == 'asc' ? 'asc' : 'desc' %>"></span>
+        </th>
+        <th class="<%= params[:sort] == 'release_date' ? "sorted-#{params[:direction]}" : '' %>">
+          <%= link_to 'Release Date', movies_path(sort: 'release_date', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
+          <span class="direction <%= params[:direction] == 'asc' ? 'asc' : 'desc' %>"></span>
+        </th>
+        <th>Actions</th> <!-- Column for Edit/Delete actions -->
+      </tr>
+    </thead>
+    <tbody>
+      <% @movies.each do |movie| %>
+        <tr>
+          <td><%= link_to movie.title, movie_path(movie, sort: params[:sort], direction: params[:direction]) %></td>
+          <td><%= movie.rating %></td>
+          <td><%= movie.release_date %></td>
+          <td>
+            <%= link_to 'Edit', edit_movie_path(movie, sort: params[:sort], direction: params[:direction]), class: 'edit-link' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<h1>Movies</h1>
-
-<div id="movies">
-  <% @movies.each do |movie| %>
-    <%= render movie %>
-    <p>
-      <%= link_to "Show this movie", movie %>
-    </p>
-  <% end %>
+  <%= link_to "New movie", new_movie_path(sort: params[:sort], direction: params[:direction]), class: "btn btn-new" %>
 </div>
-
-<%= link_to "New movie", new_movie_path %>
